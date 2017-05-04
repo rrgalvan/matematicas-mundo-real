@@ -10,9 +10,23 @@
 \usepackage{pgf,pgfpages}
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,backgrounds,calc}
+% Daniel's proposal for "uncovering" parts of a tikz-tree %
+\tikzset{
+  minimized/.style={scale=0.3},
+  noshadowed/.style={opacity=1.0},
+  shadowed/.style={opacity=0.4},
+  invisible/.style={opacity=0},
+  minimize on/.style={alt=#1{minimized}{}},
+  visible on/.style={alt=#1{}{invisible}},
+  shadow on/.style={alt=#1{shadowed}{noshadowed}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+}
 
 \usepackage{graphicx}
 \usepackage{colortbl}
+\usepackage{media9}
 
 %% Beamer style.....
 \mode<presentation>
@@ -48,7 +62,7 @@
 \end{flushright}}
 
 \title[C\'adiz Num\'erica 2013]
-{Las Matemáticas y el <<Mundo Real>>}
+{Las matemáticas y eso llamado <<mundo real>>}
 \author[J. R. Rguez. Galv\'an]{%
   { J. Rafael Rodr\'{\i}guez Galv\'an}
   \\[1.5em]
@@ -124,9 +138,9 @@
 
 \section{Introducción}
 
-\begin{frame}{El mundo de las ideas y mundo real}
-    \vspace{-2em}
+\begin{frame}{El <<mundo de las ideas>> y <<mundo real>>}
   \begin{minipage}{0.45\linewidth}
+    \vspace{-1.5em}
     % \begin{tikzpicture}
     %   \draw
     %   (3,-1) coordinate (a) node[right] {a}
@@ -135,15 +149,16 @@
     %   pic["$\alpha$", draw=orange, <->, angle eccentricity=1.2, angle radius=1cm]
     %   {angle=a--b--c};
     % \end{tikzpicture}
+    $$
+    (a-b)(a+b)=a^2-b^2 \qquad
+    $$
     \begin{center}
-      \includegraphics[width=0.65\linewidth,height=0.55\linewidth]{img/angles-quotes}
+      \includegraphics[width=0.65\linewidth,height=0.6\linewidth]{img/sin-cos}
     \end{center}
-    \vspace{-2em}
+    \vspace{-1em}
     \begin{align*}
-      (a-b)(a+b)=a^2-b^2
-      \\[1.5em]
     \int_a^b f(x) \; dx = F(b)-F(a)
-      \\[1.5em]
+      \\[2em]
       \small
       \left\{
       \begin{aligned}
@@ -169,8 +184,159 @@
   \end{minipage}
 \end{frame}
 
-\begin{frame}{Modelos Matemáticos}
+\begin{frame}{Internet...}
+    \begin{center}
+      \begin{tikzpicture}
+        \node[shadow on=<2->] {\includegraphics[width=0.83\linewidth]{img/internet}};
+        \node<2-> at (0,1.5) {\textbf{3.625.728.487} usuarios en el
+          mundo\footnote{\color{gray}Datos recogidos el 3/5/2017, de
+            \url{http://www.internetlivestats.com}}};
+        \node<2-> at (0,0.6) {\textbf{1.186.955.219} sitios web\footnotemark[\value{footnote}]};
+        \node<3> at (0, -0.6) {{\large\emph{...¿cómo encuentras la}}};
+        \node<3> at (0, -1.4) {{\LARGE\emph{\textbf{\alert{información que te interesa}}}}};
+        \node<3> at (0, -2.3) {{\Huge\emph{\textbf{?}}}};
+      \end{tikzpicture}
+    \end{center}
+\end{frame}
 
+\begin{frame}{Buscadores web}
+  \vspace*{-1em}
+  \begin{flushright}
+    \begin{tikzpicture}
+      \node[minimize on=<2-3>] {\includegraphics[width=0.9\linewidth]{img/google}};
+    \end{tikzpicture}
+  \end{flushright}
+  \vspace*{-4.9em}
+  \begin{flushleft}
+    \begin{tikzpicture}
+      \node<2->[minimize on=<4>] {\includegraphics[width=0.6\linewidth]{img/page-rank}};
+      \node<2-3> at (5.5,-1.9) {\large \it {\bfseries\href{https://es.wikipedia.org/wiki/Algoritmo}{\structure{Algoritmo}}} <<PageRank>>};
+      \node<2-3> at (4.05,-3.0) {\small $PR(A) = {1 - d \over N} + d \left( \frac{PR(B)}{L(B)}+ \frac{PR(C)}{L(C)}+ \frac{PR(D)}{L(D)}+\,\cdots \right)$};
+      \node<3> at (2.1,-4.1) {\textbf{Enorme \textit{sistema de ecuaciones}}: ¡una incógnita por cada sitio web!};
+      \node<3> at (3.5,-4.6) {\small\color{gray}...aunque existen métodos eficientes para resolverlos};
+      \node<4> at (5.2,-1.3) {
+        \begin{tabular}{c}
+          \large
+          !El \textit{éxito de los buscadores web} se basa en las
+          \\[1.2em]
+          \Huge \textbf{matemáticas}!
+        \end{tabular}
+      };
+    \end{tikzpicture}
+  \end{flushleft}
+\end{frame}
+
+\begin{frame}
+  \Large
+  \begin{center}
+    ~
+    \\[2em]
+    En la vida diaria
+    \\[1.5em]
+    hay muchas más matemáticas
+    \\[1.5em]
+    de lo que se podría pensar.
+    \\[4em]
+    \small
+  \onslide<2>{\href{http://www.cedya2017.org/sesiones_especiales.html}{Sesiones especiales en el congreso <<XXV CEDYA / XV CMA>>}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Modelos atmosféricos}
+  \begin{minipage}{0.47\linewidth}
+    \begin{flushright}
+      \onslide<1-3>{\color{darkgray}\small\emph{¿Cómo se comporta ese fluido al que llaman
+          <<atmósfera>>?}}
+    \end{flushright}
+    \vspace{3em}
+    \onslide<2->{
+      \begin{equation*}
+        \left\{
+          \begin{aligned}
+            \frac{\partial \alert<4>{\mathbf{u}}}{\partial t}
+            + (\mathbf{\alert<4>u}\cdot\nabla)\mathbf{\alert<4>u}
+            - \nu \Delta \mathbf{\alert<4>u}
+            + \nabla \alert<3>p &= \mathbf{f},
+            \\
+            \nabla\cdot \mathbf{\alert<4>u} &= 0.
+          \end{aligned}
+        \right.
+      \end{equation*}
+      \begin{flushright}
+        {\scriptsize\color{darkgray}Modelo simplificado (ecuaciones de
+          Navier-Stokes)}
+      \end{flushright}
+    }
+    \vspace{1.1em}
+    \begin{flushright}
+     \onslide<3>{\alert<3>{P}resión atmosférica}
+     \\[0.5em]
+     \onslide<4>{\alert<4>{V}elocidad del fluido}
+      \end{flushright}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\linewidth}
+    \includegraphics<1-3>[width=1.0\linewidth,height=1.3\linewidth]{img/tiempo-atmosf}
+    \includegraphics<4>[width=1.0\linewidth,height=1.2\linewidth]{img/modelos-tiempo-atmosf}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Flujo de aguas en el Estrecho de Gibraltar}
+  \begin{minipage}{0.45\linewidth}
+    \begin{itemize}
+    \item Aproximación del dominio de cálculo (triangulación)
+    \item Aproximación numérica de de las ecuaciones (Navier-Stokes)
+    \item Resolución de las ecuaciones en los vértices de los
+      triángulos
+    \end{itemize}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics<1->[width=1.0\linewidth,height=0.65\linewidth]{img/malla-estrecho-2d}
+  \end{minipage}
+  \vspace*{2em} \onslide<2>{
+    Cientos de miles de incógnitas {\color{gray}\dotfill} \\[1em]
+    {\color{gray}\dotfill} no linealidad {\color{gray}\dotfill} un mundo 3D {\color{gray}\dotfill}\\[1em]
+    {\color{gray}\dotfill} \large
+    ¡\textit{\bfseries\structure<2>{grandes~ordenadores},~\structure<2>{supercomputación}}!}
+\end{frame}
+
+\begin{frame}
+  \includemedia{alt content}{video/gibraltar-tubes-3d-30s.mp4}
+\end{frame}
+\begin{frame}{Modelos matemáticos}
+  \begin{center}
+      \begin{tikzpicture}[
+        % Define standard arrow tip
+        >=stealth',
+        % Define style for boxes
+        punkt/.style={
+           rectangle,
+           rounded corners,
+           scale=1.1, fill=gray!30,
+           draw=black, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+         % Define arrow style
+         pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt},
+         % line width=1.2pt
+        ]
+        \node[punkt] (A) at (0,0) {\color{PHDgreen}<<Mundo real>>};
+        \node[punkt] (B) at (6,0) {\color{PHDred}Modelo matemático}
+        edge[pil, <-, bend left=-45] (A);
+        \node[punkt] (C) at (3,-3) {\color{orange}Predicciones}
+        edge[pil, ->, bend left=45] (A)
+        edge[pil, <-, bend left=-45, inner sep=1.0ex, align=right] node[right] {hola} (B);
+        % \path[line width=1.2pt, ->] (A) edge (B);
+        % \path[line width=1.2pt, ->] (B) edge (C);
+        % \path[line width=1.2pt, ->] (C) edge (A);
+      \end{tikzpicture}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Imágenes utilizadas}
@@ -178,7 +344,15 @@
   \begin{enumerate}
   \item Tropical Cyclone Debbie Make Landfall in Queensland. NASA, licencia CC-by.
   \item King Boletes (Boletus edulis). Bernard Sprag, dominio público.
-  \item One World Trade Center\_2016. Harvey Barrison, licencia CC by-sa.
+  \item One World Trade Center\_2016. Harvey Barrison, licencia CC-by-sa.
+  \item Sine and Cosine. MediaCommons, User:345Kai, dominio público.
+  \item Internet. Procsilas Moscas, licencia CC-by.
+  \item Google.Paul Downey, licencia CC-by.
+  \item Page Rank. Felipe Micaroni Lalli, licencia CC-by-sa.
+  \item Madrid 264 weather girl. David Holt, licencia CC-by-sa.
+  \item Isobaras. MediaCommons, User:Asierog, licencia CC-by-sa.
+  \item NOAA Wavewatch III 120-hour wind and wave forecast for the
+    North Atlantic. Public domain.
   \end{enumerate}
 \end{frame}
 
