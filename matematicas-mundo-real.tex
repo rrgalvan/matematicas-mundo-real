@@ -301,7 +301,7 @@
     ¡\textit{\bfseries\structure<2>{grandes~ordenadores},~\structure<2>{supercomputación}}!}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Modelo 3D de flujo de corriente en el estrecho}
   \includemedia{alt content}{video/gibraltar-tubes-3d-30s.mp4}
 \end{frame}
 \begin{frame}{Modelos matemáticos}
@@ -326,12 +326,16 @@
            shorten >=2pt},
          % line width=1.2pt
         ]
-        \node[punkt] (A) at (0,0) {\color{PHDgreen}<<Mundo real>>};
-        \node[punkt] (B) at (6,0) {\color{PHDred}Modelo matemático}
-        edge[pil, <-, bend left=-45] (A);
-        \node[punkt] (C) at (3,-3) {\color{orange}Predicciones}
-        edge[pil, ->, bend left=45] (A)
-        edge[pil, <-, bend left=-45, inner sep=1.0ex, align=right] node[right] {hola} (B);
+        \node[punkt] (A) at (0,0) {\color{PHDgreen}\em <<Mundo real>>};
+        \node[punkt] (B) at (6,0) {\color{PHDred}\em Modelo matemático}
+        edge[pil, <-, bend left=-45] node[above] {\footnotesize
+          \begin{tabular}{l} Leyes de la naturaleza\end{tabular}} (A);
+        \node[punkt] (C) at (3,-3) {\color{orange}\em Simulación en ordenador}
+        edge[pil, ->, bend left=45]  node[left] {\footnotesize
+          \begin{tabular}{l} $\bullet$ Validación\\$\bullet$ Predicción\end{tabular}} (A)
+        edge[pil, <-, bend left=-45, inner sep=1.0ex, align=right] node[right] {\footnotesize
+          \begin{tabular}{l} $\bullet$ Análisis\\$\bullet$ Aproximación numérica \\
+            $\bullet$ Algoritmos\end{tabular}} (B);
         % \path[line width=1.2pt, ->] (A) edge (B);
         % \path[line width=1.2pt, ->] (B) edge (C);
         % \path[line width=1.2pt, ->] (C) edge (A);
