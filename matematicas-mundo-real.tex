@@ -65,10 +65,12 @@
 {Las matemáticas y eso llamado <<mundo real>>}
 \author[J. R. Rguez. Galv\'an]{%
   { J. Rafael Rodr\'{\i}guez Galv\'an}
-  \\[1.5em]
+  \\[1.2em]
   {\small \em Colegio Argantonio}
   \\[0.2em]
   {\scriptsize Cádiz, \today}
+  \\[0.9em]
+  \includegraphics[width=2.5em]{img/cc-by}
 }
 \date{}
 
@@ -103,7 +105,10 @@
 
 \newcommand\gris{\color{PHDgray}}
 \newcommand\amarillo{\color{PHDyellow}}
-
+\newcommand\video[2][0.8\textheight]{% #1: file #2: height
+  \includemedia{\framebox[\linewidth]{\rule{0pt}{#2}}}{#1}
+  \par\hfill\scriptsize Vídeo: #1
+}
 \setcounter{tocdepth}{1}
 
 
@@ -132,9 +137,9 @@
 \setbeamertemplate{background}
  {\includegraphics[width=\paperwidth,height=\paperheight]{slide_bg}}
 
-\begin{frame}{Plan}
-  \tableofcontents
-\end{frame}
+% \begin{frame}{Plan}
+%   \tableofcontents
+% \end{frame}
 
 \section{Introducción}
 
@@ -188,10 +193,10 @@
     \begin{center}
       \begin{tikzpicture}
         \node[shadow on=<2->] {\includegraphics[width=0.83\linewidth]{img/internet}};
-        \node<2-> at (0,1.5) {\textbf{3.625.728.487} usuarios en el
-          mundo\footnote{\color{gray}Datos recogidos el 3/5/2017, de
+        \node<2-> at (0,1.5) {\textbf{3.640.453.353} usuarios en el
+          mundo\footnote{\color{gray}Datos recogidos el 23/5/2017 de
             \url{http://www.internetlivestats.com}}};
-        \node<2-> at (0,0.6) {\textbf{1.186.955.219} sitios web\footnotemark[\value{footnote}]};
+        \node<2-> at (0,0.6) {\textbf{1.196.495.067} sitios web\footnotemark[\value{footnote}]};
         \node<3> at (0, -0.6) {{\large\emph{...¿cómo encuentras la}}};
         \node<3> at (0, -1.4) {{\LARGE\emph{\textbf{\alert{información que te interesa}}}}};
         \node<3> at (0, -2.3) {{\Huge\emph{\textbf{?}}}};
@@ -233,7 +238,7 @@
     \\[2em]
     En la vida diaria
     \\[1.5em]
-    hay muchas más matemáticas
+    hay muchas más \ \alert{\LARGE m a t e m á t i c a s}
     \\[1.5em]
     de lo que se podría pensar.
     \\[4em]
@@ -315,7 +320,7 @@
      \\[0.5em]
      \onslide<5>{Análisis del modelo:}
      \\[0.3em]
-     \hfill \footnotesize\color{darkgray}¿Existe solución? ¿Con qué características?
+     \hfill \onslide<5>{\footnotesize\color{darkgray}¿Existe solución? ¿Con qué características?}
    \end{flushleft}
   \end{minipage}
   \hfill
@@ -335,8 +340,8 @@
   \begin{minipage}{0.45\linewidth}
     \begin{itemize}
     \item<2-> \alert{Aproximación del dominio de cálculo} (triangulación)
-    \item<2-> Mejor cuanto más grande se el número de triángulos!!
-    \item<3-> Aproximación numérica de de las ecuaciones
+    \item<2-> Mejor cuanto más grande sea el número de triángulos!!
+    % \item<3-> Aproximación numérica de de las ecuaciones
     \item<3-> Resolución de \alert{enormes sistemas de ecuaciones} (incógnitas en
       cada vértice)
     \end{itemize}
@@ -354,7 +359,8 @@
 \end{frame}
 
 \begin{frame}{Modelo 3D de flujo de corriente en el estrecho}
-  \includemedia{Vídeo: gibraltar-tubes-3d-30s.mp4}{video/gibraltar-tubes-3d-30s.mp4}
+  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/gibraltar-tubes-3d-30s.mp4}
+  \par\hfill\scriptsize Vídeo: gibraltar-tubes-3d-30s.mp4
 \end{frame}
 
 \begin{frame}{Tsunamis}
@@ -403,18 +409,117 @@
   \item Los fenómenos de ``tipo ondulatorio'' (sonidos, tsunamis) requieren ecuaciones de distinta naturaleza (hiperbólicas)
   \item Un nuevo modelo (ecuaciones de aguas poco profundas)
   \item Utilizado para estudiar tsunamis anteriores o predecir futuros efectos
-  \item \includemedia{Vídeo: tsunami2.avi}{video/tsunami2.avi}
+  \item Vídeo...
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Ingeniería matemática}
-
+\begin{frame}{Tsunami frente al cabo de San Vicente}
+  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/tsunami2.avi}
+  \par\hfill\scriptsize Vídeo: tsunami2.avi
 \end{frame}
+
+\begin{frame}{Matemáticas en Ingeniería}
+  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/vortices-von-karman.avi}
+  \par\hfill\scriptsize Vídeo: Cuerpo circular sumergido, vórtices de Von Karman.
+\end{frame}
+
+\begin{frame}{Matemáticas en Ingeniería}
+
+  {\large\bf Vídeos del prof. A. Quarteroni}
+  \bigskip
+  \begin{itemize}\itemsep1em
+  \item \href{https://youtu.be/8W4oFOymiyM?t=995}{\textbf{Ingeniería
+        naval}: optimización en el diseño de la quilla de un barco}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=888}{Aerodinámica y
+      Automóviles: diseño óptimo de coches \textbf{de Fórmula 1}}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=887}{Ingeniería areoespacial}
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}{Ciencias de la vida}
   \includegraphics[width=0.8\linewidth]{img/brain}
   \\
   \textbf{Venas} en el \alert{\textbf cerebro humano}
+\end{frame}
+
+\begin{frame}{Ciencias de la vida}
+
+  {\large\bf Flujo de sangre} (Vídeos de A. Quarteroni)
+
+  \begin{itemize}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=511}{<<Las
+      \textbf{Matemáticas} son nuestro \textbf{laboratorio
+        inmaterial}>>}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=645}{\textit{Flujo de sangre} y deformación de la \textbf{arteria} carótida}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=787}{Diseño de \textit{bypasses} o \textbf{puentes coronarios}}
+  \item \href{https://youtu.be/8W4oFOymiyM?t=823}{Entender cómo funciona el \textbf{cerebro humano}}
+  \end{itemize}
+  \bigskip
+  {\large\bf Oncología Matemática}
+  \begin{itemize}
+  \item
+    \href{http://matematicas.uclm.es/imaci/molab/mathoncol}{Laboratorio
+      de Oncología Matemática, UCLM}
+    \begin{quotation}\scriptsize\em
+      <<Mathematical Oncology intends to \textbf{describe processes in oncology}
+      using the tools and systematization methods of mathematics. This
+      includes mainly \textbf{mathematical model} building and techniques from
+      applied mathematics: differential equations, numerical methods,
+      optimization, etc.
+
+      The ultimate goals are to use that knowledge to \textbf{improve the
+      current treatments of cancer} patients and to raise hypothesis
+      that can be tested by clinicians and biologists. Thus unlike
+      pure mathematics that is interested in the abstract objects in
+      themselves we try to generate knowledge of direct applicability
+      in Medicine.>>
+    \end{quotation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{... y mucho más...}
+  ...utilizando \textbf{el mismo tipo de modelos matemáticos}...
+  \par\hfill ...se pueden tratar \alert{\bf fenómenos completamente diferentes}...
+  \bigskip
+  \begin{itemize}\itemsep1em
+  \item Matemáticas para la \textbf{\alert{economía}}
+    \par\bigskip
+    Material divulgativo del prof. Carlos Vázquez Cendón:
+
+    \begin{itemize}\itemsep0.5em
+    \item
+      \href{http://www.unir.net/empresa/revista/noticias/matematicas-para-la-economia/549201449354/}{\em
+        <<Las matemáticas son el lenguaje con el que se puede escribir
+        con cierto rigor los modelos de la economía>>}
+    \item
+      \href{http://www.rtve.es/alacarta/audios/eureka/eureka-se-pudo-haber-previsto-crisis-matematicas-31-05-13/1847482}{\em
+        ¿Se pudo haber previsto la crisis con matemáticas?}
+      \par\smallskip\hfill {\em Análisis del riesgo financiero}
+    \end{itemize}
+  \item Matemáticas para videojuegos
+  \item ...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{~}
+  \begin{flushleft}\em
+    En la vida diaria
+    \\[1.2em]
+    hay muchas más \ \alert{\large m a t e m á t i c a s}
+    \\[1.2em]
+    de lo que se podría pensar.
+  \end{flushleft}
+  \bigskip
+  \begin{flushright}
+    \Huge\structure{¡Gracias!}
+  \end{flushright}
+  \vfill
+  \vfill
+  ~
+  \begin{flushright}
+    \color{gray}\scriptsize\url{https://github.com/rrgalvan/matematicas-mundo-real}
+  \end{flushright}
 \end{frame}
 
 \begin{frame}{Imágenes utilizadas}
